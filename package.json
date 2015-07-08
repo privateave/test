@@ -1,0 +1,16 @@
+{
+  "name": "slack-screen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "imgur": "^0.1.5",
+    "shelljs": "^0.5.1",
+    "slack-node": "^0.1.3"
+  }
+}
