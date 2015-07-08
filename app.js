@@ -7,6 +7,8 @@ slack = new Slack();
 slack.setWebhook(argv.url);
 
 var createScreenshot = function () {
+  console.log('');
+  console.log('|||||||||||||||||||||||||||||||||||||||  ' + new Date().toString());
 //  only os x
 //  shell.exec('screencapture ./img.png');
   shell.exec('scrot ./img.png');
@@ -16,7 +18,7 @@ var createScreenshot = function () {
 var upload = function () {
   imgur.uploadFile(__dirname + '/img.png')
     .then(function (json) {
-      console.log('json', json);
+      console.log('link ->', json.data.link);
       sendToSlack(json.data.link);
     })
     .catch(function (err) {
@@ -29,9 +31,13 @@ var sendToSlack = function (url) {
     channel: "#" + argv.channel,
     username: "pahome",
     text: '->' + url
-  }, function(err, response) {
-    console.log(response);
+  }, function (err, response) {
+    console.log("slack statusCode ->", response.statusCode);
   });
 };
 
 createScreenshot();
+
+setInterval(function () {
+  createScreenshot();
+}, argv.interval);
