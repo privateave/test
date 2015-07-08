@@ -3,7 +3,9 @@ var shell = require('shelljs');
 var imgur = require('imgur');
 
 var createScreenshot = function () {
-  shell.exec('screencapture ./img.png');
+//  only os x
+//  shell.exec('screencapture ./img.png');
+  shell.exec('scrot ./img.png');
   upload();
 };
 
